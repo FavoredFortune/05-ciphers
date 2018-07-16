@@ -1,6 +1,6 @@
 package ciphers;
 
-public class CaesarShiftCipher {
+public class CaesarShiftCipher extends Cipher{
     public static void main(String[] args) {
     }
 
