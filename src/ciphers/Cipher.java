@@ -7,11 +7,12 @@ public class Cipher {
     public Cipher(){
         public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
-        public String encode (String payload){
+        public String encode(String payload){
+
         }
-        public String decode (String payload){
+        public String decode(String payload){
         }
-        protected String replaceCharacters (String payload, String source, String target){
+        protected String replaceCharacters(String payload, String source, String target){
         }
 
     }
