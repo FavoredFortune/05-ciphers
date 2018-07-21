@@ -1,15 +1,14 @@
 package ciphers;
 
+import java.security.Key;
+
 public class KeywordCipher extends Cipher {
 
-    //declare private variable to shift the alphabet by, per user input
-    private final String word;
-
     public KeywordCipher(String word){
-        this.word = word;
+        //declare private variable to shift the alphabet by, per user input
         //how to shift a string by a certain number from StackOverflow
         //https://stackoverflow.com/questions/33685946/shifting-characters-in-a-string-to-the-left/33686030
-        this.ALT_ALPHABET = word + newAlphabet(word);
+        ALT_ALPHABET = word + newAlphabet(word);
     }
 
     //charAt in java from https://beginnersbook.com/2013/12/java-string-charat-method-example/
@@ -29,22 +28,14 @@ public class KeywordCipher extends Cipher {
         if (codeOption == 1) {
             System.out.println("Enter your message");
             message = scanner.nextLine();
-            return "encoded: " +  new KeywordCipher(word).encode(message);
+            String returnMessage = new KeywordCipher(word).encode(message);
+            return "encoded: " + returnMessage + "\nEnd of program.";
         }
         if (codeOption == 2) {
             System.out.println("Enter your message");
             message = scanner.nextLine();
-            return "decoded: " + new KeywordCipher(word).decode(message);
+            String returnMessage = new KeywordCipher(word).decode(message);
+            return "decoded: " + returnMessage + "\nEnd of program.";
         } else return hunh;
-    }
-
-    public static String encode(String message) {
-        String newMessageE = Cipher.replaceCharacters(message, Cipher.ALPHABET, ALT_ALPHABET);
-        return newMessageE;
-    }
-
-    public static String decode(String message) {
-        String newMessageD = Cipher.replaceCharacters(message, ALT_ALPHABET, ALPHABET);
-        return newMessageD;
     }
 }

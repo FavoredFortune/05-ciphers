@@ -24,12 +24,13 @@ public class Cipher {
             System.out.println("Enter your message");
             message = scanner.nextLine();
             String answer = Cipher.encode(message);
-            return "encoded: " + answer + " end of program";
+            return "encoded: " + answer + "\n End of program.";
         }
         if (codeOption == 2){
             System.out.println("Enter your message");
             message = scanner.nextLine();
-            return "decoded: " + decode(message);
+            String answer = Cipher.decode(message);
+            return "decoded: " + answer + "\n End of program.";
         } else return hunh;
     }
 
