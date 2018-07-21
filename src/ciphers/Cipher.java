@@ -4,66 +4,66 @@ import java.util.Scanner;
 public class Cipher {
 
     //declare the only alphabet to be used for all ciphers
-    public static final java.lang.String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
     //declare the alternative (for encode/decode) alphabet - can be overriden by subclasses
-    public static java.lang.String ALT_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    public static String ALT_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
     public static Scanner scanner = new Scanner(System.in);
 
+    public static String hunh = "Sorry,  I don't understand your input." +
+            "\nPlease start over and enter only the number.\n";
+
     public Cipher() {
-//        String message  = this.message ;
-//        int codeChoice = this.codeChoice;
     }
 
+    //First part of interaction with user - choose encode or decode
+    public static String plainTextCipher(int codeOption, String message) {
 
-    public String plainTextCipher(int codeChoice, String message)
-
-    {
-        //First part of interaction with user - choose encode or decode
-
-        if (codeChoice == 1) {
+        if (codeOption == 1) {
             System.out.println("Enter your message");
             message = scanner.nextLine();
-            return "encoded: "+ encode(message);
-        } else if (codeChoice == 2) {
-            System.out.println("Enter your message");
-            message = scanner.nextLine();
-            return "decoded: " + decode(message);
-        } else {
-            return "sorry wrong input";
+            String answer = Cipher.encode(message);
+            return "encoded: " + answer + "\n End of program.";
         }
+        if (codeOption == 2){
+            System.out.println("Enter your message");
+            message = scanner.nextLine();
+            String answer = Cipher.decode(message);
+            return "decoded: " + answer + "\n End of program.";
+        } else return hunh;
     }
 
-    public java.lang.String encode(java.lang.String message){
-        return replaceCharacters(message, ALPHABET, ALT_ALPHABET);
+    public static String encode(String message){
+        String newMessageE = Cipher.replaceCharacters(message, ALPHABET, ALT_ALPHABET);
+       return newMessageE;
     }
 
-    public java.lang.String decode(java.lang.String message) {
-        return replaceCharacters(message, ALT_ALPHABET, ALPHABET);
+    public static String decode(String message) {
+        String newMessageD = Cipher.replaceCharacters(message, ALT_ALPHABET, ALPHABET);
+        return newMessageD;
     }
 
-    protected java.lang.String replaceCharacters(java.lang.String message, java.lang.String source, java.lang.String target) {
-        int index = 0;
-        java.lang.String replaceMessage = "";
-        java.lang.String replaceLetters = "";
-        java.lang.String currentLetter = "";
-        java.lang.String holdingLetter = "";
+    public static String replaceCharacters(String message, String sourceAlpha, String targetAlpha) {
+
+       String currentCharacter;
+       String newCharacter = new String();
 
         //charAt in java from https://beginnersbook.com/2013/12/java-string-charat-method-example/
-        //character is letter from https://stackoverflow.com/questions/4047808/what-is-the-best-way-to-tell-if-a-character-is-a-letter-or-number-in-java-withou
+        //character is letter from https://stackoverflow
+        // .com/questions/4047808/what-is-the-best-way-to-tell-if-a-character-is-a-letter-or-number-in-java-without
+        //Ideas for both from classmates Ahmed Ossan and Amy Cohen
         for (int i = 0; i < message.length(); i++) {
-            if (!Character.isLetter(message.charAt(i))) {
-                replaceLetters = replaceMessage + java.lang.String.valueOf(message.charAt(i));
-                replaceMessage = replaceLetters;
-                continue;
-            } else
-                index = source.indexOf(message.charAt(i));
-            currentLetter = java.lang.String.valueOf(target.charAt(index));
-            holdingLetter = currentLetter;
-            replaceMessage = replaceLetters += holdingLetter;
+            if (Character.isLetter(message.charAt(i))) {
+                currentCharacter = String.valueOf(targetAlpha.charAt(sourceAlpha.indexOf(message.charAt(i))));
+                newCharacter += currentCharacter;
+            } else {
+                currentCharacter = String.valueOf(message.charAt(i));
+                newCharacter += currentCharacter;
+            }
+            i++;
         }
-        System.out.println("Your altered message: " + replaceMessage);
-        return replaceMessage;
+        System.out.println("Your altered message: " + newCharacter);
+        return newCharacter;
     }
 }
