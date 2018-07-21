@@ -1,5 +1,5 @@
-
-
+import ciphers.CaesarShiftCipher;
+import ciphers.KeywordCipher;
 
 import java.util.Scanner;
 
@@ -8,9 +8,10 @@ import static ciphers.ROT13Cipher.useROT13Cipher;
 
 public class Main {
     public static void main(String[] args) {
+
+        //invoke helper methods to run program and get user input
         int choice = codeChoice();
         cipherChoice(choice);
-
     }
 
     //help from http://pages.cs.wisc.edu/~hasti/cs368/JavaTutorial/NOTES/JavaIO_Scanner.html to learn how to
@@ -70,10 +71,14 @@ public class Main {
         else if(cipherChoice == 3){
             System.out.println("Your choice: 3: Caesar Shift");
             System.out.println("How many characters (less than 26) do you want to shift?");
-            String key = scanner.nextLine();
-            System.out.println("Enter your message");
-            String messageCaesar = scanner.nextLine();
-            cipher = useCaesarShiftCipher(codeOption, key, messageCaesar);
+            Integer key = Integer.parseInt(scanner.nextLine());
+            if (key < 0 || key >27){
+                System.out.println(hunh);
+            } else {
+                System.out.println("Enter your message");
+                String messageCaesar = scanner.nextLine();
+                cipher = CaesarShiftCipher.useCaesarShiftCipher(codeOption, key, messageCaesar);
+            }
         }
         else if(cipherChoice == 4){
             System.out.println("Your choice: 4: Keyword Cipher");
@@ -81,7 +86,7 @@ public class Main {
             String word = scanner.nextLine();
             System.out.println("Enter your message");
             String messageKeyword = scanner.nextLine();
-            cipher = useKeywordCipher(codeOption,word, messageKeyword);
+            cipher = KeywordCipher.useKeywordCipher(codeOption,word, messageKeyword);
         } else {
         System.out.println(hunh);
         }
