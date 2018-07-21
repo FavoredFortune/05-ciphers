@@ -17,14 +17,14 @@ public class Cipher {
     public Cipher() {
     }
 
-
+    //First part of interaction with user - choose encode or decode
     public static String plainTextCipher(int codeOption, String message) {
-        //First part of interaction with user - choose encode or decode
 
         if (codeOption == 1) {
             System.out.println("Enter your message");
             message = scanner.nextLine();
-            return "encoded: " + encode(message);
+            String answer = Cipher.encode(message);
+            return "encoded: " + answer + " end of program";
         }
         if (codeOption == 2){
             System.out.println("Enter your message");

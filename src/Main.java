@@ -1,5 +1,7 @@
 import ciphers.CaesarShiftCipher;
+import ciphers.Cipher;
 import ciphers.KeywordCipher;
+import ciphers.ROT13Cipher;
 
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class Main {
         //invoke helper methods to run program and get user input
         int choice = codeChoice();
         cipherChoice(choice);
+        System.out.println(cipherChoice(choice));
     }
 
     //help from http://pages.cs.wisc.edu/~hasti/cs368/JavaTutorial/NOTES/JavaIO_Scanner.html to learn how to
@@ -39,6 +42,7 @@ public class Main {
             System.out.println("Your choice: 2 decode");
         } else {
         System.out.println(hunh);
+        codeChoice();
         }
         return codeOption;
     }
@@ -60,13 +64,14 @@ public class Main {
             System.out.println("Your choice: 1: Plain Text Cipher");
             System.out.println("Enter your message");
             String messagePT= scanner.nextLine();
-            cipher = plainTextCipher(codeOption, messagePT);
-             return cipher;
+            cipher = Cipher.plainTextCipher(codeOption, messagePT);
+            return cipher +" end of program.";
         } else if(cipherChoice == 2){
             System.out.println("Your choice: 2: ROT13 Cipher");
             System.out.println("Enter your message");
             String messageROT13= scanner.nextLine();
-            cipher = useROT13Cipher(codeOption, messageROT13);
+            cipher = ROT13Cipher.useROT13Cipher(codeOption, messageROT13);
+            return cipher + " end of program.";
         }
         else if(cipherChoice == 3){
             System.out.println("Your choice: 3: Caesar Shift");
@@ -78,6 +83,7 @@ public class Main {
                 System.out.println("Enter your message");
                 String messageCaesar = scanner.nextLine();
                 cipher = CaesarShiftCipher.useCaesarShiftCipher(codeOption, key, messageCaesar);
+                return cipher;
             }
         }
         else if(cipherChoice == 4){
@@ -87,11 +93,11 @@ public class Main {
             System.out.println("Enter your message");
             String messageKeyword = scanner.nextLine();
             cipher = KeywordCipher.useKeywordCipher(codeOption,word, messageKeyword);
+            return cipher;
         } else {
         System.out.println(hunh);
+        codeChoice();
         }
         return cipher;
     }
-
-
 }

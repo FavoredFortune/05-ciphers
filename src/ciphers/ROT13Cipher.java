@@ -14,12 +14,16 @@ public class ROT13Cipher extends Cipher {
         if (codeOption == 1) {
             System.out.println("Enter your message");
             message = scanner.nextLine();
-            return "encoded: " + encode(message);
+            String revisedMessage = String.valueOf(new ROT13Cipher());
+            revisedMessage =  encode(message);
+            return "encoded: " + revisedMessage;
         }
         if (codeOption == 2) {
             System.out.println("Enter your message");
             message = scanner.nextLine();
-            return "decoded: " + decode(message);
+            String revisedMessage = String.valueOf(new ROT13Cipher());
+            revisedMessage =  decode(message);
+            return "decoded: " + revisedMessage;
         } else return hunh;
     }
 
