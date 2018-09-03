@@ -49,11 +49,13 @@ public class Cipher {
        String currentCharacter;
        String newCharacter = new String();
 
+       int i =0; //for while loop after looking at Ahmed Ossan's solution
+
         //charAt in java from https://beginnersbook.com/2013/12/java-string-charat-method-example/
         //character is letter from https://stackoverflow
         // .com/questions/4047808/what-is-the-best-way-to-tell-if-a-character-is-a-letter-or-number-in-java-without
         //Ideas for both from classmates Ahmed Ossan and Amy Cohen
-        for (int i = 0; i < message.length(); i++) {
+        while(i < message.length()) {
             if (Character.isLetter(message.charAt(i))) {
                 currentCharacter = String.valueOf(targetAlpha.charAt(sourceAlpha.indexOf(message.charAt(i))));
                 newCharacter += currentCharacter;

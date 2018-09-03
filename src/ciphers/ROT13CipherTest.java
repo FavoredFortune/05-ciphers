@@ -1,10 +1,12 @@
 package ciphers;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ROT13CipherTest extends Cipher {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void useROT13Cipher() {
     }
 }
